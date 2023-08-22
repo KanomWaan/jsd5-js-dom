@@ -5,20 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS-DOM-2 Example 2</title>
   </head>
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Welcome Form</title>
+  </head>
   <body>
-    <input id="fullname" type="text" placeholder="Full Name" />
-    <input id="nickname" type="text" placeholder="NickName" />
-    <button onClick="createHTML()">Submit</button>
-    <ul></ul>
+      <input id="fullname" type="text" placeholder="Full Name" />
+      <input id="nickname" type="text" placeholder="NickName" />
+      <button onclick="addToList()">Add to List</button>
+      <ul id="list"></ul>
+  
+      <script type="text/javascript">
+          const addToList = () => {
+              const fullname = document.querySelector("#fullname").value;
+              const nickname = document.querySelector("#nickname").value;
+  
+              const listElement = document.querySelector("#list");
+              const listItem1 = document.createElement("li");
+              listItem1.textContent = ` Full Name: ${fullname}`;
+              const listItem2 = document.createElement("li");
+              listItem2.textContent = ` Nickname: ${nickname}`;
+              listElement.appendChild(listItem);
+  
+              // Clear input fields
+              document.querySelector("#fullname").value = "";
+              document.querySelector("#nickname").value = "";
+          };
+      </script>
   </body>
-  <script type="text/javascript">
-    const createHTML = () => {
-      const fullname = document.querySelector("#fullname");
-      const nickname = document.querySelector("#nickname");
-
-      // select ul first here
-      const dive = document.querySelector("....");
-      dive.innerHTML = // code here
-    };
-  </script>
+  </html>
+  
 </html>
