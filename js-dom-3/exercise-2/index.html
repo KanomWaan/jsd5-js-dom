@@ -7,16 +7,18 @@
     <input
       type="text"
       id="fullname"
-      onChange="fullNameType(event)"
+         
       placeholder="Type something"
     />
 
     <input
       type="text"
       id="nickname"
-      onChange="nickNameType(event)"
+      
       placeholder="Type something"
     />
+    
+    <button onclick="submit()">Submit</button>
 
     <h3>Fullname:</h3>
     <div id="fullname-display"></div>
@@ -24,15 +26,34 @@
     <div id="nickname-display"></div>
 
     <script>
-      const textDiv = document.querySelector("#textDiv");
+    
+      
 
-      function fullNameType(event) {
-        // write code here
-      }
+      // function fullNameType(event) {
+      //   // write code here
+      //   const fullname = event.target.value; 
+      //   const fullnamedisplay = document.querySelector("#fullname-display");
+      //   fullnamedisplay.innerText = fullname;
+      // }
 
-      function nickNameType(event) {
-        // write code here
-      }
+      // function nickNameType(event) {
+      //   // write code here
+      //   const nickname = event.target.value ;
+      //   const nicknamedisplay = document.querySelector("#nickname-display");
+      //   nicknamedisplay.innerText = nickname;
+      // }
+
+      function submit() {
+      const fullname = document.querySelector("#fullname").value;
+      const nickname = document.querySelector("#nickname").value;
+
+      const fullnamedisplay = document.querySelector("#fullname-display");
+      fullnamedisplay.innerText = fullname;
+
+      const nicknamedisplay = document.querySelector("#nickname-display");
+      nicknamedisplay.innerText = nickname;
+    }
+    
     </script>
   </body>
 </html>

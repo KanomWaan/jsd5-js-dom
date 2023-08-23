@@ -4,7 +4,7 @@
     <title>JS-DOM-3 Exercise 1</title>
   </head>
   <body>
-    <select id="mySelect" onChange="s(event)">
+    <select id="mySelect" onChange="onChange(event)">
       <option value="programmer">Programmer</option>
       <option value="doctor">Doctor</option>
       <option value="creator">Creator</option>
@@ -12,6 +12,16 @@
 
     <script>
       // write your function here.
+      const onChange = (event) => {
+        const selectedValue = event.target.value;
+        alert(selectedValue);
+      }
+
+      // const  onChange = (event) => {
+      //   const selectedValue = document.querySelector("#mySelect").value ;
+      //   alert(selectedValue);
+
+      //  }
     </script>
   </body>
 </html>
