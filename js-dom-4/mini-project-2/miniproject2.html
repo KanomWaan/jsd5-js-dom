@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miniproject2</title>
+    <link rel="stylesheet" href="miniproject.css">
+</head>
+<body>
+    <main class="main" >
+        <h2>Enter Data</h2>
+        <div class="form" >
+
+          <label for="nameinput" class="formlabel">name</label>
+          <input type="text" id="nameinput" class="forminput">
+
+          <label for="ageinput" class="formlabel">age</label>
+          <input type="text" id="ageinput" class="forminput">
+          
+          <label for="weightinput" class="formlabel">weight</label>
+          <input type="text" id="weightinput" class="forminput">
+          
+          <label for="runinput" class="formlabel">Current Running(minutes)</label>
+          <input type="text" id="runinput" class="forminput">
+        
+          <button type="button" id="updateButton" onClick="update()">
+            Add Data
+          </button>
+        </div>
+         <h2>Entered Data</h2>
+         
+         <table border="1"  cellpadding="10" cellspacing="1">
+            <thead align="center">
+                <th>Name</th>
+                <th>Age</th>
+                <th>Weight</th>
+                <th>Current Running (minutes)</th>
+                <th>Good Running</th>
+            </thead>
+            <tbody align="center" id="datatable">
+                <!-- <tr>
+                    <td id="namedisplay"></td>
+                    <td id="agedisplay"></td>
+                    <td id="Weightdisplay"></td>
+                    <td id="Rundisplay"></td>
+                    <td id="gooddisplay"></td>
+                </tr> -->
+                
+            </tbody>
+        </table>
+        <div>
+      </div>
+    </main>
+
+    <script>
+        // const update = () => {
+        //     // name
+        //     const nameinput = document.querySelector("#nameinput").value ;
+        //     const namedisplay = document.querySelector("#namedisplay");
+        //     namedisplay.innerHTML = nameinput ;
+
+        //     // age
+        //     const ageinput = document.querySelector("#ageinput").value ;
+        //     const agedisplay = document.querySelector("#agedisplay");
+        //     agedisplay.innerHTML = ageinput ;
+
+        //     // weight
+        //     const weightinput = document.querySelector("#weightinput").value ;
+        //     const Weightdisplay = document.querySelector("#Weightdisplay");
+        //     Weightdisplay.innerHTML = weightinput ;
+
+        //     // running
+        //     const runinput = document.querySelector("#runinput").value ;
+        //     const Rundisplay = document.querySelector("#Rundisplay");
+        //     Rundisplay.innerHTML = runinput ;
+
+        // }
+
+        const update = () => {
+            // input from person 
+            const nameinput = document.querySelector("#nameinput").value ;
+            const ageinput = document.querySelector("#ageinput").value ;
+            const weightinput = document.querySelector("#weightinput").value ;
+            const runinput = document.querySelector("#runinput").value ;
+            
+            // calcurate good running 
+
+            const runcal = parseInt(runinput);
+
+            let resultrun ;
+            if(runcal >=0 && runcal<=30){
+                resultrun ="Good";
+            }else if(runcal >=31 && runcal<=60){
+                resultrun ="Balance";
+            }else if(runcal >60){
+                resultrun ="Extreme";
+            }else {
+                resultrun ="Error";
+            }
+
+
+            const datatable = document.querySelector("#datatable");
+
+            datatable.innerHTML +=`<tr
+            ><td>${nameinput}</td>
+            <td>${ageinput}</td>
+            <td>${weightinput}</td>
+            <td>${runinput}</td>
+            <td>${resultrun}</td>
+            </tr>`;
+        }
+
+
+    </script>
+</body>
+</html>
