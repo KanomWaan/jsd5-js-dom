@@ -1,19 +1,21 @@
-import React from "react";
+// import React from "react";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
-  const temperature = 12;
+ const[temperature, setTemperature] = useState(0);
   return (
     <div id="app">
       <Header temp={temperature} />
-      <Content tempContent={temperature} />
-      <Footer />
+      <Content tempContent={temperature}/>
+      <Footer tempbot={temperature} settempbot={setTemperature}/>
     </div>
   );
 }
 
 function Header(props) {
   const tempInHeader = props.temp;
+
   return (
     // Code for Header
     // <Header />
@@ -46,13 +48,14 @@ function Temperature(props) {
   );
 }
 
-function Footer() {
+function Footer({tempbot,settempbot}) {
+  
   return (
     // Code for Footer
     // <Footer />
     <footer>
-      <button>Up</button>
-      <button>Down</button>
+      <button onClick={(tempbot)= settempbot(tempbot +1)}>Up</button>
+      <button onClick={(tempbot)= settempbot(tempbot -1)}>Down</button>
     </footer>
   );
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import usePost from "./hook/usePost";
 import { getUser } from "./hook/me";
 import "./App.css";
@@ -10,20 +11,36 @@ function App() {
     let id = `id-${Math.floor(Math.random() * 10000)}`; // generate id here by Math.random() (please use integer)
     let time = new Date().toDateString(); // generate timestamp here by (new Date().toDateString())
     const user = getUser();
-    let data = {};
+
+    let data = {
+      id: id,
+      author: user.author,
+      avatar: user.avatar,
+      time: time,
+      content: content,
+      image: image,
+    };
     create(data);
   };
 
   return (
     <div id="app">
       <h1>Enter Data</h1>
-      <PostContainer />
+      <PostContainer createPost={createPost} />
       <FeedSection posts={posts} removeHandler={remove} />
     </div>
   );
 }
 
-const PostContainer = () => {
+const PostContainer = ({ createPost }) => {
+  const [content, setContent] = useState();
+  const [image, setImage] = useState();
+
+  const createPostInPostContainer = () => {
+    // code here
+    createPost(content, image);
+  };
+
   return (
     <div className="post-container">
       <div className="post-header">
@@ -34,10 +51,22 @@ const PostContainer = () => {
         <textarea
           className="post-input"
           placeholder="What's on your mind?"
+          onChange={(evl) => setContent(evl.target.value)}
         ></textarea>
+        <input
+          className="post-input"
+          type="text"
+          placeholder="image url"
+          onChange={(evl) => setImage(evl.target.value)}
+        />
       </div>
       <div className="post-actions">
-        <button className="post-button">Post</button>
+        <button
+          className="post-button"
+          onClick={() => createPostInPostContainer()}
+        >
+          Post
+        </button>
       </div>
     </div>
   );
