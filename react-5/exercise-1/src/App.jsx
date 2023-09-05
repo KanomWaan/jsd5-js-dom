@@ -6,23 +6,33 @@ import "./App.css";
 const App = () => {
   const [members, setMembers] = useState([]);
 
-  const [singleMember, setSingleMember] = useState([]);
+  const [singleMember, setSingleMember] = useState({
+    id: "",
+    name: "",
+    age: "",
+    weight: "",
+    status: "",
+  });
 
   useEffect(() => {
-    const getData ______fill the blank here_______ {
-      const response = await axios();
+    const getData = async () => {
+      const response = await axios.get("https://jsd5-mock-backend.onrender.com/members");
       // set member here
+      setMembers(response.data);
     };
 
     getData();
   }, []);
 
   const getDataById = async (id) => {
-    // call axios here
-
+    const response = await axios.get(
+      `https://jsd5-mock-backend.onrender.com/members/${id}`
+    );
     if (response.status === 200 && response.data) {
-      // set data here
+      const data = response.data;
+      setSingleMember({ ...data });
     }
+
   };
 
   return (
