@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Form = ({ submitHandler }) => {
+const Form = ({ updateHandler,createHandler }) => {
   const [id, setId] = useState();
   const [name, setName] = useState();
   const [age, setAge] = useState();
@@ -39,8 +39,11 @@ const Form = ({ submitHandler }) => {
         value={status}
         onChange={(ev) => setStatus(ev.target.value)}
       />
-      <button onClick={() => submitHandler(id, name, age, weight, status)}>
-        Submit
+      <button onClick={() => updateHandler(id, name, age, weight, status)}>
+        update
+      </button>
+      <button onClick={() => createHandler(name, age, weight, status)}>
+        create
       </button>
     </div>
   );
