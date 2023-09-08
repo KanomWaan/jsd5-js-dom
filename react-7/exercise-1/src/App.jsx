@@ -1,5 +1,8 @@
 import "./App.css";
+// import React from "react";
+import { createContext, useContext, useState } from "react";
 
+const Navbarprops = createContext({})
 function App() {
   const posts = [
     {
@@ -32,11 +35,13 @@ function App() {
   ];
 
   return (
-    <div id="app">
-      <h1>Enter Data</h1>
-      <PostContainer />
-      <FeedSection postData={posts} />
-    </div>
+    <Navbarprops.Provider value={posts}>
+      <div id="app">
+        <h1>Enter Data</h1>
+        <PostContainer />
+      <FeedSection  />
+      </div>
+    </Navbarprops.Provider>
   );
 }
 
@@ -60,7 +65,8 @@ const PostContainer = () => {
   );
 };
 
-const FeedSection = ({ postData }) => {
+const FeedSection = () => {
+  const postData = useContext(Navbarprops)
   return (
     <div className="feed">
       {postData.map((post) => {
